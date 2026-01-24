@@ -6,9 +6,25 @@
 
 ## 📊 Current Progress
 
-- **LeetCode Solved:** 0 / 350
-- **Current Week:** Week 1 - Arrays
+- **LeetCode Solved:** 3 / 350 (0.86%)
+  - Easy: 3 | Medium: 0 | Hard: 0
+- **Current Week:** Week 1 - Arrays (Day 2/7 completed)
 - **Projects Completed:** 0 / 11
+- **Exercises Completed:** 10 / 16 (Week 1)
+- **Days Streak:** 2 🔥
+
+### Recent Achievements
+- ✅ Mastered two-pointer technique (array reversal)
+- ✅ Learned prefix sum pattern (LeetCode #1480)
+- ✅ Understood shallow vs deep copy hands-on
+- ✅ Felt the O(n) pain of insert/delete operations
+
+### Patterns Learned
+- Two-pointer (converging)
+- Prefix sum / Running sum
+- 2D array traversal
+- Linear search
+- In-place algorithms
 
 ## 📅 Roadmap
 
