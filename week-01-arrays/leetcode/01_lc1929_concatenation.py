@@ -1,10 +1,13 @@
-def concat(numbers):
-    temp = numbers.copy()
-    for i in range(len(numbers)):
-        temp.append(numbers[i])
-    return temp
-
+def getConcatenation(nums):
+    return nums + nums 
 numbers = [10, 40, 70, 80, 30, 60, 50, 20, 90]
-numbers = concat(numbers)
-for i in range(len(numbers)):
-        print(f"{numbers[i]}")
+ans = getConcatenation(numbers)
+print(f"{ans}")
+
+
+"""
+Leetcode version:
+class Solution:
+    def getConcatenation(self, nums: List[int]) -> List[int]:
+        return nums + nums
+    """

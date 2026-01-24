@@ -1,13 +1,20 @@
-def getConcatenation(nums):
-    return nums + nums 
-numbers = [10, 40, 70, 80, 30, 60, 50, 20, 90]
-ans = getConcatenation(numbers)
-print(f"{ans}")
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
 
+for i, row in enumerate(matrix):
+    for j, element in enumerate(row):
+        print(f"matrix[{i}][{j}] = {element}")
 
-"""
-Leetcode version:
-class Solution:
-    def getConcatenation(self, nums: List[int]) -> List[int]:
-        return nums + nums
-    """
+for row in matrix:
+    row_sum = sum(row)  # Python's built-in sum()
+    print(row_sum)
+
+maximum = matrix[0][0]
+for row in matrix:
+    for element in row:
+        if element > maximum:
+            maximum = element
+print("Maximum element in the matrix is:", maximum)
