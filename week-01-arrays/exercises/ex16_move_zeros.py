@@ -1,4 +1,4 @@
-# ex15_move_zeros.py
+# ex16_move_zeros.py
 def move_zeros(arr):
     curr_pos = 0
     for i in range(len(arr)):

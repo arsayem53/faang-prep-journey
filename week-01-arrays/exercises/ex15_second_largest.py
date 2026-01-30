@@ -1,4 +1,4 @@
-# ex14_second_largest.py
+# ex15_second_largest.py
 def second_largest_number(arr):
     largest = arr [0]
     second_largest = arr[0]
@@ -14,3 +14,4 @@ def second_largest_number(arr):
 arr = [10, 20, 30, 40, 50]
 result = second_largest_number(arr)
 print(f"Second largest number is: {result}")
+

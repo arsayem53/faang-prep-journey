@@ -1,0 +1,13 @@
+# ex15_move_zeros.py
+def move_zeros(arr):
+    curr_pos = 0
+    for i from 0 to (len(arr)-1):
+        if arr[i] != 0:
+           arr[curr_pos] = arr[i]
+           curr_pos +=1
+    for i from curr_pos to (len(arr)-1):
+         arr[curr_pos] = 0
+         curr_pos +=1
+arr = [10, 20, 30, 40, 50]
+result = move_zeros(arr):
+print(f"Zero moved: {result}")
