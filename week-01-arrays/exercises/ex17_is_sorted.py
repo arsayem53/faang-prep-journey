@@ -7,3 +7,4 @@ def is_sorted(arr):
 arr = [10, 20, 30, 40, 0]
 result = is_sorted(arr)
 print(f"Array is sorted: {result}")
+
