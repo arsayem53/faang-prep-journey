@@ -173,3 +173,258 @@ for row in matrix:
 - **O(n) space:** New array/structure of size n
   - Examples: creating copy, building new result array
 - **Key question:** "Am I creating a new data structure that grows with input size?"
+
+## Day 3: Array Operations & Algorithms
+
+### 1. Remove Duplicates Pattern
+
+**Problem:** Remove duplicate elements from an array
+
+**Approach 1: Using Hash Set (Unsorted Array)**
+- Use a `set()` to track elements we've seen
+- Only add elements to result if not in set
+- **Time:** O(n), **Space:** O(n)
+```python
+def remove_duplicates(arr):
+    seen = set()
+    result = []
+    for element in arr:
+        if element not in seen:
+            seen.add(element)
+            result.append(element)
+    return result
+```
+
+**Use case:** Unsorted arrays where order must be preserved
+
+---
+
+### 2. Merge Two Sorted Arrays ⭐ IMPORTANT
+
+**Pattern:** Two-pointer merge (used in Merge Sort!)
+
+**Algorithm:**
+1. Use two pointers `i` and `j` for each array
+2. Compare elements at both pointers
+3. Take the smaller one, advance that pointer
+4. After one array exhausted, copy remaining from other
+
+**Visualization:**
+```
+arr1 = [1, 3, 5]    arr2 = [2, 4, 6]
+        ↑                    ↑
+        i                    j
+
+Compare: 1 vs 2 → Take 1, i++
+result = [1]
+
+Compare: 3 vs 2 → Take 2, j++
+result = [1, 2]
+
+... continue until one array empty
+Copy remaining elements
+```
+
+**Code Pattern:**
+```python
+def merge_sorted_arrays(arr1, arr2):
+    result = []
+    i = j = 0
+    
+    # Merge while both have elements
+    while i < len(arr1) and j < len(arr2):
+        if arr1[i] <= arr2[j]:
+            result.append(arr1[i])
+            i += 1
+        else:
+            result.append(arr2[j])
+            j += 1
+    
+    # Copy remaining (only one will have elements left)
+    result.extend(arr1[i:])
+    result.extend(arr2[j:])
+    
+    return result
+```
+
+**Key Points:**
+- Each element visited exactly once → O(n + m)
+- Must handle remaining elements after one array exhausted
+- Used as subroutine in Merge Sort algorithm
+
+---
+
+### 3. Array Rotation ⭐ MULTIPLE APPROACHES
+
+**Problem:** Rotate array right by k positions
+
+**Example:**
+```
+arr = [1, 2, 3, 4, 5], k = 2
+Result: [4, 5, 1, 2, 3]
+```
+
+**Approach 1: Using Slicing (Pythonic)**
+```python
+def rotate_array(arr, k):
+    n = len(arr)
+    k = k % n  # Handle k > n
+    return arr[-k:] + arr[:-k]
+```
+- **Time:** O(n), **Space:** O(n)
+- Creates new array
+- Simple and readable
+
+**Approach 2: Reversal Algorithm (Space Efficient)**
+
+**Magic Formula:** Three reversals
+1. Reverse entire array
+2. Reverse first k elements
+3. Reverse remaining elements
+
+**Example:**
+```
+arr = [1, 2, 3, 4, 5], k = 2
+
+Step 1: Reverse all
+[5, 4, 3, 2, 1]
+
+Step 2: Reverse first k=2
+[4, 5, 3, 2, 1]
+
+Step 3: Reverse remaining 3
+[4, 5, 1, 2, 3] ✓
+```
+
+**Code Pattern:**
+```python
+def rotate_array_reversal(arr, k):
+    n = len(arr)
+    k = k % n
+    
+    def reverse(start, end):
+        while start < end:
+            arr[start], arr[end] = arr[end], arr[start]
+            start += 1
+            end -= 1
+    
+    reverse(0, n - 1)   # Reverse all
+    reverse(0, k - 1)   # Reverse first k
+    reverse(k, n - 1)   # Reverse rest
+    return arr
+```
+- **Time:** O(n), **Space:** O(1)
+- In-place modification
+- More space-efficient
+
+**Important:** Always use `k = k % n` to handle cases where `k > n`
+
+---
+
+### 4. LeetCode Patterns Learned
+
+**Pattern 1: Array Interleaving (Shuffle)**
+- Problem: Rearrange array by alternating between two halves
+- Key insight: Use index math `2*i` and `2*i+1` for positioning
+
+**Pattern 2: Comparison with Max (Kids with Candies)**
+- Find global maximum first
+- Compare each element against this maximum
+- Simple O(n) pattern for "can reach maximum" problems
+
+**Pattern 3: Count Pairs (Good Pairs)**
+- Nested loop pattern: `for i` then `for j from i+1`
+- Ensures `i < j` without double counting
+- O(n²) brute force, can optimize with hash map
+
+---
+
+### 5. Time & Space Complexity Summary - Day 3
+
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| Remove duplicates (set) | O(n) | O(n) | Set stores unique elements |
+| Merge sorted arrays | O(n+m) | O(n+m) | Result array |
+| Rotate (slicing) | O(n) | O(n) | Creates new array |
+| Rotate (reversal) | O(n) | O(1) | In-place, 3 reversals |
+| Shuffle array | O(n) | O(n) | Index math pattern |
+| Good pairs (brute force) | O(n²) | O(1) | Nested loops |
+
+---
+
+### 6. Key Operations Practiced
+
+1. **Remove duplicates** using set (ex11)
+2. **Merge sorted arrays** with two pointers (ex12) ⭐
+3. **Rotate array** with reversal algorithm (ex13) ⭐
+4. **Shuffle array** with index math (LC #1470)
+5. **Kids with candies** - comparison pattern (LC #1431)
+6. **Good pairs** - nested loop pattern (LC #1512)
+
+---
+
+### 7. Important Patterns to Remember
+
+**Two-Pointer Merge:**
+```python
+i = j = 0
+while i < len(arr1) and j < len(arr2):
+    if arr1[i] <= arr2[j]:
+        result.append(arr1[i])
+        i += 1
+    else:
+        result.append(arr2[j])
+        j += 1
+result.extend(arr1[i:])
+result.extend(arr2[j:])
+```
+
+**Array Rotation (Slicing):**
+```python
+k = k % len(arr)
+return arr[-k:] + arr[:-k]
+```
+
+**Array Interleaving:**
+```python
+for i in range(n):
+    result[2*i] = nums[i]        # Even positions
+    result[2*i + 1] = nums[i+n]  # Odd positions
+```
+
+**Nested Loop for Pairs:**
+```python
+count = 0
+for i in range(len(arr)):
+    for j in range(i+1, len(arr)):
+        if condition:
+            count += 1
+```
+
+---
+
+### 8. Algorithm Analysis Tips
+
+**Space Complexity Questions to Ask:**
+1. Am I creating a new array/structure that grows with input? → O(n)
+2. Am I only using a few variables regardless of input size? → O(1)
+3. Am I modifying in-place? → O(1)
+
+**Time Complexity Questions to Ask:**
+1. How many times do I visit each element?
+2. Are there nested loops? → Usually O(n²)
+3. Do I process each element once? → Usually O(n)
+
+---
+
+### 9. Edge Cases to Always Consider
+
+- **Empty array:** `[]`
+- **Single element:** `[5]`
+- **All duplicates:** `[1, 1, 1, 1]`
+- **No duplicates:** `[1, 2, 3, 4]`
+- **k > array length:** Handle with `k = k % n`
+- **k = 0:** No rotation needed
+- **Different length arrays:** When merging
+
+---

@@ -146,5 +146,125 @@ return -1
 > "Clean code matters: Pythonic iteration, meaningful names, separation of concerns. These habits compound over time."
 
 ---
+### Day 3: Array Operations (Jan 23, 2026)
 
-Last Updated: Day 2, Jan 22, 2026
+**Core Concepts:**
+- Remove duplicates using hash set for O(n) time
+- Two-pointer merge for sorted arrays (Merge Sort foundation!)
+- Array rotation: slicing (simple) vs reversal (space-efficient)
+- Index math for array rearrangement problems
+
+**Key Patterns Learned:**
+
+1. **Two-Pointer Merge (Different from Day 2!):**
+```python
+# Day 2: Converging pointers (reverse)
+left, right = 0, len(arr)-1
+while left < right:
+    # Process and move toward each other
+
+# Day 3: Parallel pointers (merge)
+i = j = 0
+while i < len(arr1) and j < len(arr2):
+    # Compare and advance one pointer
+# Don't forget remaining elements!
+```
+
+2. **Array Rotation (Reversal):**
+```python
+# Three magical reversals
+reverse(0, n-1)   # All
+reverse(0, k-1)   # First k
+reverse(k, n-1)   # Rest
+# Result: rotated by k!
+```
+
+3. **Index Math for Interleaving:**
+```python
+# Pattern for alternating elements
+for i in range(n):
+    result[2*i] = first_half[i]
+    result[2*i + 1] = second_half[i]
+```
+
+**Important Insights:**
+
+1. **Merge Algorithm Revelation:**
+   - This is THE algorithm used in Merge Sort!
+   - Two sorted arrays → one sorted array in O(n+m) time
+   - Critical to remember: copy remaining elements after one exhausts
+
+2. **Multiple Valid Solutions:**
+   - Rotation: slicing (O(n) space, simple) vs reversal (O(1) space, clever)
+   - Trade-offs between simplicity and efficiency
+   - In interviews, discuss both approaches!
+
+3. **k % n Pattern:**
+   - Rotating by k when k > n is same as rotating by k % n
+   - Always normalize k first: `k = k % len(arr)`
+   - Prevents out-of-bounds errors
+
+4. **Nested Loops for Pairs:**
+   - `for i` then `for j from i+1` ensures i < j
+   - Prevents double-counting: (0,3) counted, not (3,0)
+   - O(n²) brute force, can optimize with hash map (future skill)
+
+**LeetCode Problems:**
+
+- **#1470: Shuffle Array** - learned index math pattern for interleaving
+- **#1431: Kids with Candies** - simple max comparison pattern
+- **#1512: Good Pairs** - nested loop for pair counting
+
+**Mistakes & Lessons:**
+
+1. **Forgot remaining elements in merge:** After while loop, one array still has elements!
+   - Fix: `result.extend(arr1[i:])` and `result.extend(arr2[j:])`
+
+2. **Didn't handle k > n in rotation:** Led to negative indexing errors
+   - Fix: Always `k = k % len(arr)` first
+
+3. **Confused rotation direction:** Right rotation = move last k to front
+   - Visualization helped solidify this
+
+**Code Comparison - Merge Algorithm:**
+```python
+# ❌ My first attempt (buggy)
+def merge(arr1, arr2):
+    result = []
+    i = j = 0
+    while i < len(arr1) and j < len(arr2):
+        # comparison logic
+    return result  # Missing remaining elements!
+
+# ✅ Correct version
+def merge(arr1, arr2):
+    result = []
+    i = j = 0
+    while i < len(arr1) and j < len(arr2):
+        # comparison logic
+    result.extend(arr1[i:])  # Copy remaining
+    result.extend(arr2[j:])  # Copy remaining
+    return result
+```
+
+**Patterns Now in Arsenal:**
+
+1. Two-pointer (converging) - for reverse, palindrome
+2. Two-pointer (merge) - for combining sorted arrays
+3. Prefix sum - for range queries
+4. Hash set - for deduplication
+5. Array rotation - for circular shift problems
+6. Index math - for rearrangement problems
+7. Nested loops - for pair counting (O(n²) baseline)
+
+**Wisdom Gained:**
+
+"The reversal algorithm seemed like magic until I traced it 5 times. Now I see it's just clever manipulation of array sections. Understanding comes from doing, not just reading."
+
+"Merge algorithm is everywhere! Merge Sort, merging results, combining sorted lists. This O(n+m) pattern is foundational."
+
+"Trade-offs matter: slicing is simple, reversal is space-efficient. In interviews, discuss both approaches and ask about constraints."
+
+---
+
+Last Updated: Day 3, Jan 23, 2026

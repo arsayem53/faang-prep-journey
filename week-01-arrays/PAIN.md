@@ -66,3 +66,67 @@
 - Morning exercises: ~2 hours (as planned) ✅
 - Afternoon LeetCode: ~1.5 hours (faster than expected!) ✅
 - Understanding concepts: Taking time to really understand > rushing ✅
+
+## Day 3: Pain Points and Learnings
+
+### 1. Confusions / Challenges
+
+- **Merge sorted arrays:** Initially forgot to copy remaining elements after one array exhausted - learned the hard way!
+- **Array rotation logic:** The reversal algorithm seemed magical at first - had to trace through multiple examples to understand
+- **Slicing syntax:** `arr[-k:]` and `arr[:-k]` took a moment to fully internalize
+- **Index math for shuffle:** Understanding why `2*i` and `2*i+1` work required careful tracing
+- **Nested loops confusion:** In good pairs problem, understanding why `j` starts at `i+1` took visualization
+
+### 2. Breakthrough Moments
+
+- **"Aha!" with merge algorithm:** Realized it's just like merging two sorted decks of cards!
+- **Reversal algorithm clicked:** After tracing 3 examples, the three-reversal pattern made perfect sense
+- **Slicing is powerful:** Python's negative indexing makes rotation incredibly simple
+- **Two-pointer power:** Seeing how merge uses two pointers differently than reverse was enlightening
+- **Index math pattern:** Once I traced shuffle step-by-step, the `2*i` pattern became obvious
+
+### 3. Key Learnings
+
+- **Always handle remaining elements:** In merge, one array will have leftover elements - don't forget them!
+- **k % n is critical:** For rotation, must handle cases where k > array length
+- **Multiple valid approaches:** Rotation has space-efficient (reversal) and simple (slicing) solutions - trade-offs matter
+- **Index math opens doors:** The shuffle problem showed how creative indexing solves complex rearrangements
+- **Nested loops = O(n²):** Good pairs problem reinforced why nested loops are expensive
+
+### 4. Code Quality Improvements
+
+- Started using `extend()` instead of manual loops for copying remaining elements
+- Better variable naming: `i`, `j` for merge pointers is clearer than `pointer1`, `pointer2`
+- Using `k = k % n` as defensive programming
+- Comments for complex index math help future-me understand code
+- Testing edge cases first (empty, single element) before normal cases
+
+### 5. What Still Needs Practice
+
+- Recognizing when to use two pointers vs other patterns
+- Speed on index math problems - shuffle took longer than expected
+- Coming up with reversal algorithm on my own (would have used slicing)
+- Optimizing O(n²) solutions (good pairs could use hash map)
+
+### 6. Patterns I Now Recognize
+
+- Two-pointer merge pattern (sorted arrays)
+- Array rotation pattern (will see in strings, linked lists)
+- Interleaving pattern (even/odd positioning)
+- Nested loop for pair counting
+- Set for deduplication
+
+### 7. Time Management
+
+- Morning exercises: ~2.5 hours (merge took longer than expected)
+- Afternoon LeetCode: ~2 hours (good pairs nested loop was quick!)
+- Understanding concepts: Reversal algorithm explanation was worth the time investment
+
+### 8. Notes for Next Steps
+
+- Day 4 covers more array problems and introduces new patterns
+- Need to practice merge algorithm without looking at notes
+- Should try optimizing good pairs with hash map approach
+- Rotation patterns will appear again in Week 7 (Strings)
+
+---
