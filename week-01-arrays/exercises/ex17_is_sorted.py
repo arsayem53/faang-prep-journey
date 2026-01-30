@@ -1,4 +1,4 @@
-# ex16_is_sorted.py
+# ex17_is_sorted.py
 def is_sorted(arr):
     for i in range(1, len(arr)):
         if arr[i] < arr[i-1]:
