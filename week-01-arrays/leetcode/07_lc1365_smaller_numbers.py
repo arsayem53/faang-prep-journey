@@ -11,3 +11,15 @@ def smaller_number(arr):
 arr = [8,1,2,2,3]
 result = smaller_number(arr)
 print(f"Count of smaller numbers: {result}")
+
+
+"""class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        count = [0] * len(nums)
+        for i in range(len(nums)):
+            nums_count = 0
+            for j in range(len(nums)):
+                if nums[i] > nums[j]:
+                   nums_count += 1
+            count[i] = nums_count
+        return count"""
