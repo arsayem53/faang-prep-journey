@@ -428,3 +428,168 @@ for i in range(len(arr)):
 - **Different length arrays:** When merging
 
 ---
+
+## Day 4: More Array Problems & Patterns
+
+### 1. Find Second Largest (Single Pass)
+
+**Problem:** Find second largest without sorting — O(n) time
+
+**Key Idea:** Track TWO variables simultaneously: `largest` and `second_largest`
+
+**Algorithm:**
+- If current > largest → old largest becomes second, current becomes largest
+- Else if current > second AND current != largest → current becomes second
+```python
+def find_second_largest(arr):
+    largest = second_largest = float('-inf')
+    
+    for num in arr:
+        if num > largest:
+            second_largest = largest  # Old largest drops down
+            largest = num
+        elif num > second_largest and num != largest:
+            second_largest = num
+    
+    return second_largest if second_largest != float('-inf') else None
+```
+
+**Trace:**
+```
+arr = [12, 35, 1, 10, 34]
+
+num=12: largest=12, second=-inf
+num=35: second=12, largest=35
+num=1:  skip (1 < 12)
+num=10: skip (10 < 12)
+num=34: second=34 (34 > 12 and 34 != 35)
+
+Result: 34 ✓
+```
+
+**Edge Cases:**
+- All same elements → return None
+- Less than 2 elements → return None
+- Two elements → smaller one is second
+
+---
+
+### 2. Move Zeros to End (Two-Pointer Write Position)
+
+**Problem:** Move zeros to end, maintain relative order of non-zeros
+
+**Key Idea:** Use a `write_pos` pointer — write non-zeros forward, fill zeros after
+
+**Algorithm:**
+1. Scan array, write non-zero elements starting at index 0
+2. Fill remaining positions with zeros
+```python
+def move_zeros(arr):
+    write_pos = 0
+    
+    # Pass 1: Write non-zeros to front
+    for i in range(len(arr)):
+        if arr[i] != 0:
+            arr[write_pos] = arr[i]
+            write_pos += 1
+    
+    # Pass 2: Fill remaining with zeros
+    for i in range(write_pos, len(arr)):
+        arr[i] = 0
+```
+
+**Trace:**
+```
+arr = [0, 1, 0, 3, 12]
+write_pos = 0
+
+i=0: arr[0]=0  → skip
+i=1: arr[1]=1  → arr[0]=1, write_pos=1  → [1, 1, 0, 3, 12]
+i=2: arr[2]=0  → skip
+i=3: arr[3]=3  → arr[1]=3, write_pos=2  → [1, 3, 0, 3, 12]
+i=4: arr[4]=12 → arr[2]=12, write_pos=3 → [1, 3, 12, 3, 12]
+
+Fill zeros from index 3:
+→ [1, 3, 12, 0, 0] ✓
+```
+
+**Why this pattern matters:**
+- Same `write_pos` concept used in "remove duplicates in-place"
+- Appears in linked list problems too
+- O(n) time, O(1) space
+
+---
+
+### 3. Check If Array Is Sorted
+
+**Problem:** Return True if array is in non-decreasing order
+
+**Key Idea:** Just check each element against the previous one
+```python
+def is_sorted(arr):
+    for i in range(1, len(arr)):
+        if arr[i] < arr[i-1]:
+            return False
+    return True
+```
+
+**Why it works:**
+- If ANY element is smaller than the one before it → not sorted
+- If we check all pairs and none violate → sorted
+- Empty/single element arrays are always sorted (loop doesn't run)
+
+---
+
+### 4. Count Smaller Numbers Than Current
+
+**Pattern:** Nested loops for "for each element, count something across array"
+```python
+def smallerNumbersThanCurrent(nums):
+    count = [0] * len(nums)
+    for i in range(len(nums)):
+        smaller = 0
+        for j in range(len(nums)):
+            if nums[j] < nums[i]:
+                smaller += 1
+        count[i] = smaller
+    return count
+```
+
+**Time:** O(n²) — for each of n elements, scan all n elements
+**Space:** O(n) — result array
+
+---
+
+### 5. Time & Space Complexity Summary - Day 4
+
+| Operation | Time | Space | Pattern Used |
+|-----------|------|-------|--------------|
+| Second largest | O(n) | O(1) | Two variable tracking |
+| Move zeros | O(n) | O(1) | Write position pointer |
+| Check sorted | O(n) | O(1) | Sequential comparison |
+| Count smaller | O(n²) | O(n) | Nested loops |
+
+---
+
+### 6. Write Position Pattern ⭐
+
+This pattern appeared in multiple problems this week:
+```python
+# Generic "write position" pattern
+write_pos = 0
+
+for i in range(len(arr)):
+    if condition(arr[i]):           # Keep this element?
+        arr[write_pos] = arr[i]     # Write it forward
+        write_pos += 1              # Move write position
+
+# After loop: elements [0, write_pos) are kept
+# Remaining positions need filling (zeros, or just truncate)
+```
+
+**Used in:**
+- Move zeros to end
+- Remove duplicates in-place (Day 3)
+- Will appear in: linked lists, string problems
+
+---

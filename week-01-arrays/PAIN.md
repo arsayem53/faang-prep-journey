@@ -130,3 +130,48 @@
 - Rotation patterns will appear again in Week 7 (Strings)
 
 ---
+## Day 4: Pain Points and Learnings
+
+### 1. Confusions / Challenges
+
+- **Second largest initialization:** Setting both to `arr[0]` was wrong — second largest should start as None or -inf
+- **Typo in second largest:** `secoond_largest` caused variable mismatch — always proofread!
+- **Duplicate handling in second largest:** `[10, 10, 10]` should return None, needed the `!= largest` check
+- **Move zeros fill step:** Easy to forget the second loop that fills remaining positions with zeros
+- **Nested loop variable naming:** Using `nums` as both parameter and counter variable was confusing
+
+### 2. Breakthrough Moments
+
+- **Write position pattern clicked:** Realized move zeros and remove duplicates use the SAME pattern — just different conditions
+- **Two variable tracking:** Second largest showed how tracking multiple values in one pass avoids sorting
+- **Is sorted simplicity:** Sometimes the answer is just one comparison per element — not everything needs complex logic
+- **Pre-allocating result:** Using `[0] * len(arr)` instead of appending is cleaner for fixed-size outputs
+
+### 3. Key Learnings
+
+- **Initialization matters:** Wrong starting values cause subtle bugs that are hard to trace
+- **Typos are expensive:** One misspelled variable name wastes 10 minutes of debugging
+- **Same pattern, different problems:** Write position appears in zeros, duplicates, and more — recognize the pattern!
+- **O(n²) is okay sometimes:** Not every problem needs O(n) — nested loops are fine for small constraints
+- **Edge cases first:** Always think about empty arrays, single elements, all-same elements
+
+### 4. Code Quality Improvements
+
+- Pre-allocating arrays with `[0] * n` instead of appending
+- Cleaner variable names that don't shadow parameters
+- Better edge case handling (empty arrays, duplicates)
+- Writing both local and LeetCode versions consistently
+
+### 5. What Still Needs Practice
+
+- Coming up with the two-variable tracking pattern on my own
+- Handling duplicate edge cases without hints
+- Proofreading code before running (typo habit)
+
+### 6. Notes for Next Steps
+
+- Day 5 is Mini Project — Student Grade Manager
+- Will use: traversal, max/min, counting, sorting, insert/delete
+- Everything from Week 1 comes together!
+
+---

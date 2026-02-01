@@ -4,19 +4,19 @@
 - [x] Day 1 (Jan 21): Array Basics ✅
 - [x] Day 2 (Jan 22): Array Manipulation ✅
 - [x] Day 3 (Jan 23): Array Operations ✅
-- [ ] Day 4 (Jan 24): More Array Problems
+- [x] Day 4 (Jan 24): More Array Problems ✅
 - [ ] Day 5 (Jan 25): Mini Project
 - [ ] Day 6 (Jan 26): Review + Catch Up
 - [ ] Day 7 (Jan 27): Rest + Light Review
 
-### LeetCode Progress (6/7)
+### LeetCode Progress (7/7) ✅ COMPLETE!
 - [x] #1929 - Concatenation of Array ✅
 - [x] #1480 - Running Sum of 1d Array ✅
 - [x] #1672 - Richest Customer Wealth ✅
 - [x] #1470 - Shuffle the Array ✅
 - [x] #1431 - Kids With Candies ✅
 - [x] #1512 - Number of Good Pairs ✅
-- [ ] #1365 - How Many Smaller
+- [x] #1365 - How Many Smaller ✅
 
 ### Mini Project
 - [ ] Student Grade Manager
@@ -25,23 +25,24 @@
 - Day 1: 4.5h
 - Day 2: 4h
 - Day 3: 4.5h
-- **Total Week 1:** 13h / 25h target
+- Day 4: 3.5h
+- **Total Week 1:** 16.5h / 25h target
 
 ---
 
 ## Statistics
 
-**Total LeetCode:** 6 / 350
-- Easy: 6 / 90
+**Total LeetCode:** 7 / 350
+- Easy: 7 / 90
 - Medium: 0 / 200
 - Hard: 0 / 50
 
 **Total Projects:** 0 / 11
 
-**Total Hours:** 13h
+**Total Hours:** 16.5h
 
-**Current Streak:** 3 days 🔥
+**Current Streak:** 4 days 🔥
 
 ---
 
-Last Updated: Jan 23, 2026
+Last Updated: February 1, 2026

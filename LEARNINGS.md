@@ -268,3 +268,84 @@ def merge(arr1, arr2):
 ---
 
 Last Updated: Day 3, Jan 23, 2026
+
+### Day 4: More Array Problems (Jan 24, 2026)
+
+**Core Concepts:**
+- Two-variable tracking for single-pass problems
+- Write position pointer pattern
+- Sequential comparison for sorted check
+- Nested loops for pair/count problems
+
+**Key Patterns Learned:**
+
+1. **Two Variable Tracking:**
+```python
+# Track largest AND second largest simultaneously
+largest = second = float('-inf')
+
+for num in arr:
+    if num > largest:
+        second = largest    # Old largest drops down
+        largest = num
+    elif num > second and num != largest:
+        second = num
+```
+
+2. **Write Position Pattern ⭐ (Reusable!):**
+```python
+# Generic pattern — appears in MANY problems
+write_pos = 0
+for i in range(len(arr)):
+    if should_keep(arr[i]):
+        arr[write_pos] = arr[i]
+        write_pos += 1
+# Fill or truncate remaining
+```
+
+3. **Sequential Comparison:**
+```python
+# Check property between consecutive elements
+for i in range(1, len(arr)):
+    if arr[i] < arr[i-1]:   # Violation found
+        return False
+return True                  # No violations
+```
+
+**Important Insights:**
+
+1. **Pattern Recognition Across Problems:**
+   - Move zeros and remove duplicates use the SAME write position pattern
+   - Only the condition changes: `!= 0` vs `not seen before`
+   - This is how you get fast at interviews — recognize reusable patterns
+
+2. **Initialization Is Everything:**
+   - Wrong initial values cause subtle bugs
+   - For "find max/min" type problems, use `float('-inf')` or `float('inf')`
+   - For "seen" tracking, use empty set or None
+
+3. **O(n²) Has Its Place:**
+   - Not every problem needs optimal complexity
+   - Nested loops are fine when constraints are small
+   - But always think: "Can I do better?"
+
+**Mistakes & Lessons:**
+1. Typo `secoond_largest` — always proofread variable names
+2. Wrong initialization `second = arr[0]` — think about what starting value makes sense
+3. Missing duplicate check — `[10, 10, 10]` should return None for second largest
+
+**Week 1 Patterns Arsenal (Complete):**
+1. Two-pointer (converging) — reverse, palindrome
+2. Two-pointer (merge) — merge sorted arrays
+3. Prefix sum — range queries
+4. Hash set — deduplication
+5. Array rotation — slicing & reversal
+6. Index math — interleaving
+7. Nested loops — pair counting
+8. Write position — move zeros, remove duplicates ⭐
+9. Two variable tracking — second largest ⭐
+10. Sequential comparison — is sorted
+
+---
+
+Last Updated: Day 4, Februay 1, 2026
