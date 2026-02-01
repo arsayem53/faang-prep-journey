@@ -1,0 +1,162 @@
+# grade_manager.py
+"""
+Mini Project: Student Grade Manager
+Week 1 - Arrays Mini Project
+
+Features:
+- Add/Remove students
+- Calculate average
+- Find highest/lowest
+- Count above average
+- Display sorted
+
+Uses: Arrays, traversal, max/min, counting, sorting
+"""
+
+# ============================================
+# DATA STORAGE
+# ============================================
+students = []  # List of {"name": str, "grade": int}
+
+
+# ============================================
+# CORE FUNCTIONS
+# ============================================
+
+def add_student(students, name, grade):
+    """
+    Add a new student.
+    Validate: grade 0-100, name not empty.
+    """
+    # TODO: Implement
+    pass
+
+
+def remove_student(students, index):
+    """
+    Remove student at given index.
+    Validate: index is valid, list not empty.
+    """
+    # TODO: Implement
+    pass
+
+
+def show_all(students):
+    """
+    Display all students with index.
+    Format: [index] Name - Grade
+    """
+    # TODO: Implement
+    pass
+
+
+def calculate_average(students):
+    """
+    Calculate average of all grades.
+    Return: float average, or None if empty.
+    """
+    # TODO: Implement
+    pass
+
+
+def find_highest(students):
+    """
+    Find student with highest grade.
+    Return: the student dict, or None if empty.
+    """
+    # TODO: Implement
+    pass
+
+
+def find_lowest(students):
+    """
+    Find student with lowest grade.
+    Return: the student dict, or None if empty.
+    """
+    # TODO: Implement
+    pass
+
+
+def count_above_average(students):
+    """
+    Count students with grade above average.
+    Return: count (int), or None if empty.
+    """
+    # TODO: Implement
+    pass
+
+
+def show_sorted(students):
+    """
+    Display students sorted by grade (high to low).
+    DON'T modify the original list — sort a copy!
+    """
+    # TODO: Implement
+    pass
+
+
+# ============================================
+# MENU SYSTEM
+# ============================================
+
+def show_menu():
+    """Print the main menu."""
+    print("\n=============================================")
+    print("    🎓 Student Grade Manager")
+    print("=============================================")
+    print("1. Add a student")
+    print("2. Remove student by index")
+    print("3. Show all students")
+    print("4. Calculate average")
+    print("5. Find highest grade")
+    print("6. Find lowest grade")
+    print("7. Count grades above average")
+    print("8. Show grades sorted")
+    print("9. Exit")
+    print("=============================================")
+
+ while True:
+        show_menu()
+        choice = input("Enter your choice (1-9): ")
+
+        if choice == "1":
+            name = input("Enter student name: ")
+            grade =int(input("Enter grade (0-100): "))
+            # TODO: Convert grade to int, call add_student
+            add_student
+            pass
+
+        elif choice == "2":
+            show_all(students)
+            index = input("Enter index to remove: ")
+            # TODO: Convert index to int, call remove_student
+            pass
+
+        elif choice == "3":
+            show_all(students)
+
+        elif choice == "4":
+            # TODO: Call calculate_average, print result
+            pass
+
+        elif choice == "5":
+            # TODO: Call find_highest, print result
+            pass
+
+        elif choice == "6":
+            # TODO: Call find_lowest, print result
+            pass
+
+        elif choice == "7":
+            # TODO: Call count_above_average, print result
+            pass
+
+        elif choice == "8":
+            show_sorted(students)
+
+        elif choice == "9":
+            print("Goodbye! 👋")
+            break
+
+        else:
+            print("Invalid choice! Enter 1-9.")
