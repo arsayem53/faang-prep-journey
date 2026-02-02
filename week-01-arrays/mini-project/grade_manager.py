@@ -56,6 +56,63 @@ def calculate_average(students):
     return average
     
 
+def find_highest(students):
+    if len(students) == 0:
+        return None
+
+    highest_student = students[0]
+
+    for student in students:
+        if student["grade"] > highest_student["grade"]:
+            highest_student = student
+
+    return highest_student
+
+def find_lowest(students):
+    """
+    Find student with lowest grade.
+    Return: the student dict, or None if empty.
+    """
+    if len(students) == 0:
+        return None
+
+    lowest_student = students[0]
+
+    for student in students:
+        if student["grade"] < lowest_student["grade"]:
+            lowest_student = student
+
+    return lowest_student
+
+def count_above_average(students):
+    """
+    Count students with grade above average.
+    Return: count (int), or None if empty.
+    """
+    if len(students) == 0:
+        return None
+    average = calculate_average(students)
+    above_student = 0
+    for student in students:
+        if student["grade"] > average:
+            above_student += 1
+
+    return above_student
+
+def show_sorted(students):
+    """
+    Display students sorted by grade (high to low).
+    DON'T modify the original list — sort a copy!
+    """
+    if len(students) == 0:
+        print("No students found.")
+        return  
+    new_students = students.copy()
+    sorted_students = sorted(new_students, key=lambda x: x["grade"], reverse=True)
+    for index, student in enumerate(sorted_students):
+        print(f"[{index}] {student['name']} - {student['grade']}")
+    
+
 def show_menu():
     """Print the main menu."""
     print("\n=============================================")
@@ -109,22 +166,33 @@ while True:
 
 
         elif choice == "5":
-            # TODO: Call find_highest, print result
-            pass
-
+            highest = find_highest(students)
+            if highest is None:
+                print("No students to calculate Highest.")
+            else:
+               print(f"Highest result is {highest}")
+               
         elif choice == "6":
             # TODO: Call find_lowest, print result
-            pass
+            lowest = find_lowest(students)
+            if lowest is None:
+                print("No students to calculate Lowest.")
+            else:
+               print(f"Lowest result is {lowest}")
 
         elif choice == "7":
             # TODO: Call count_above_average, print result
-            pass
+            above = count_above_average(students)
+            if above is None:
+                print("No students to calculate above average.")
+            else:
+               print(f"There are {above} students who are above average")
 
         elif choice == "8":
             show_sorted(students)
 
         elif choice == "9":
-            print("Goodbye! 👋")
+            print("Goodbye!")
             break
 
         else:
